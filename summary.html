@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résumé - Gestion des Heures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Résumé des Heures</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button onclick="logout()" class="btn btn-secondary">Déconnexion</button>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="navigation-buttons">
+                <a href="hours-entry.html" class="btn btn-secondary">Saisir les heures</a>
+                <a href="summary.html" class="btn btn-primary">Voir le résumé</a>
+            </div>
+
+            <div class="summary-controls">
+                <div class="form-group">
+                    <label for="monthSelect">Sélectionner le mois:</label>
+                    <input type="month" id="monthSelect">
+                </div>
+                <div class="form-group">
+                    <label for="hourlyRate">Prix de l'heure de base (€):</label>
+                    <input type="number" id="hourlyRate" step="0.01" min="0" placeholder="Ex: 15.50">
+                </div>
+                <button onclick="calculateSummary()" class="btn btn-primary">Calculer</button>
+            </div>
+
+            <div id="summaryResults" class="summary-results"></div>
+
+            <div id="detailedTable" class="detailed-table"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="summary.js"></script>
+</body>
+</html>

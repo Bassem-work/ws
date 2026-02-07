@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie des Heures - Gestion des Heures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Saisie des Heures de Travail</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button onclick="logout()" class="btn btn-secondary">Déconnexion</button>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="navigation-buttons">
+                <a href="hours-entry.html" class="btn btn-primary">Saisir les heures</a>
+                <a href="summary.html" class="btn btn-secondary">Voir le résumé</a>
+            </div>
+
+            <form id="hoursForm">
+                <div class="form-group">
+                    <label for="workDate">Date</label>
+                    <input type="date" id="workDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="hours">Nombre d'heures travaillées</label>
+                    <input type="number" id="hours" step="0.5" min="0" max="24" required placeholder="Ex: 8">
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+            </form>
+
+            <div class="month-selector">
+                <label for="monthSelect">Afficher les heures du mois:</label>
+                <input type="month" id="monthSelect">
+                <button onclick="loadMonthHours()" class="btn btn-secondary">Charger</button>
+            </div>
+
+            <div id="hoursTable"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="hours-entry.js"></script>
+</body>
+</html>
