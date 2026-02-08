@@ -9,7 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     errorMessage.textContent = '';
 
     try {
-        const { data, error } = await supabase
+        const { data, error } = await window.supabaseClient
             .from('employees')
             .select('*')
             .eq('matricule', matricule)

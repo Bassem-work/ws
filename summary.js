@@ -34,7 +34,7 @@ async function calculateSummary() {
     const endDate = `${year}-${month}-31`;
 
     try {
-        const { data, error } = await supabase
+        const { data, error } = await window.supabaseClient
             .from('work_hours')
             .select('*')
             .eq('employee_id', employeeId)

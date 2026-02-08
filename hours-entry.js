@@ -30,7 +30,7 @@ document.getElementById('hoursForm').addEventListener('submit', async (e) => {
     successMessage.classList.remove('show');
 
     try {
-        const { data: existing } = await supabase
+        const { data: existing } = await window.supabaseClient
             .from('work_hours')
             .select('id')
             .eq('employee_id', employeeId)
@@ -38,14 +38,14 @@ document.getElementById('hoursForm').addEventListener('submit', async (e) => {
             .maybeSingle();
 
         if (existing) {
-            const { error } = await supabase
+            const { error } = await window.supabaseClient
                 .from('work_hours')
                 .update({ hours })
                 .eq('id', existing.id);
 
             if (error) throw error;
         } else {
-            const { error } = await supabase
+            const { error } = await window.supabaseClient
                 .from('work_hours')
                 .insert([
                     { employee_id: employeeId, date: workDate, hours }
@@ -74,7 +74,7 @@ async function loadMonthHours() {
     const endDate = `${year}-${month}-31`;
 
     try {
-        const { data, error } = await supabase
+        const { data, error } = await window.supabaseClient
             .from('work_hours')
             .select('*')
             .eq('employee_id', employeeId)
@@ -127,7 +127,7 @@ async function deleteEntry(id) {
     }
 
     try {
-        const { error } = await supabase
+        const { error } = await window.supabaseClient
             .from('work_hours')
             .delete()
             .eq('id', id);
